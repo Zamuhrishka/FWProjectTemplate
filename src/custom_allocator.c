@@ -39,10 +39,11 @@ static Block_t pool[POOL_SIZE_IN_UNITS][1] = {{0}};
 unit_t *custom_alloc(void)
 {
     unit_t *pBlock = NULL;
+    size_t i = 0;
 
     while(!mutex_acquire()) {};
 
-    for(size_t i = 0; i < POOL_SIZE_IN_UNITS; i++)
+    for(i = 0; i < POOL_SIZE_IN_UNITS; i++)
     {
         if(!pool[i][0].busy)
         {

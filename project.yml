@@ -18,7 +18,7 @@
   :which_ceedling: vendor/ceedling
   :ceedling_version: 0.30.0
   :options_paths:
-    - project/options
+    # - project/options
   #   - external/shared/options
   :default_tasks:
     - test:all

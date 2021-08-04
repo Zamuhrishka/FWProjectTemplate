@@ -1,0 +1,302 @@
+---
+:project:
+  :use_exceptions: false
+  :use_mocks: true
+  :compile_threads: 1
+  :test_threads: 1
+  :use_test_preprocessor: true
+  :use_deep_dependencies: false
+  :generate_deep_dependencies: true
+  :test_file_prefix: test_
+  :options_paths: []
+  :release_build: true
+  :use_preprocessor_directives: false
+  :use_auxiliary_dependencies: true
+  :auto_link_deep_dependencies: true
+  :build_root: build
+  :which_ceedling: vendor/ceedling
+  :ceedling_version: 0.30.0
+  :default_tasks:
+  - test:all
+:release_build:
+  :use_assembly: true
+  :artifacts:
+  - sua50.map
+  :output: sua50.hex
+:paths:
+  :test:
+  - "+:test/**"
+  - "-:test/support"
+  :source:
+  - src/**
+  :support:
+  - test/support
+  :include: []
+  :libraries: []
+  :test_toolchain_include: []
+  :release_toolchain_include: []
+:files:
+  :test: []
+  :source: []
+  :assembly: []
+  :support: []
+  :include: []
+:environment:
+- :rake_columns: '120'
+:defines:
+  :test:
+  - TEST
+  :test_preprocess:
+  - TEST
+  :release:
+  - USE_FULL_DEBUG
+  - PBCLK=40000000ul
+  - CFG_INCLUDE_SUA_BOARD
+  - DEBUG_OUTPUT=UART_USE
+  - DBG_PORT=DBG_UART_PIC32
+  - QUEUE_STATIC_MODE=1
+  - _GSP_DEBUG_ENABLE
+  - _MOTORS_DEBUG_ENABLE
+  - MOTOR_TYPE_MCDC3002P
+  - CO_FSYS=80000
+  - CO_USE_GLOBALS
+  - CO_PBCLK=40000
+  - QCBOR_DISABLE_FLOAT_HW_USE
+  - COMPASS_ARDU_IMU
+  - _UAV_POS_SOURCE_ETH
+  - SUAP_DEBUG_ENABLE
+  - TEL_TEST_MODE
+  - TEL_SER_CBOR
+  - NO_CAN_RXF
+  - DBG_OUTPUT_UART
+  - GPL_LICENSE_TERMS_ACCEPTED
+  - SUA_BOARD
+  - DNS_CLIENT_SUPPORT=0
+  - NBNS_CLIENT_SUPPORT=0
+  - NET_DEBUG_ENABLE
+  - MOTORS_DEBUG_ENABLE
+  - GSP_DEBUG_ENABLE
+  - COMPASS_DEBUG_ENABLE
+  :release_preprocess: []
+  :use_test_definition: false
+  :common:
+:libraries:
+  :flag: "-l${1}"
+  :path_flag: "-L ${1}"
+  :test: []
+  :test_preprocess: []
+  :release: []
+  :release_preprocess: []
+  :placement: :end
+  :system: []
+:flags: {}
+:extension:
+  :header: ".h"
+  :source: ".c"
+  :assembly: ".s"
+  :object: ".o"
+  :libraries:
+  - ".a"
+  - ".so"
+  :executable: ".hex"
+  :map: ".map"
+  :list: ".lst"
+  :testpass: ".pass"
+  :testfail: ".fail"
+  :dependencies: ".d"
+:unity:
+  :vendor_path: D:/sasha/temp/gits/fwProjectTemplate/vendor/ceedling/vendor
+  :defines: []
+:cmock:
+  :vendor_path: D:/sasha/temp/gits/fwProjectTemplate/vendor/ceedling/vendor
+  :defines: []
+  :includes: []
+  :mock_prefix: mock_
+  :when_no_prototypes: :warn
+  :enforce_strict_ordering: true
+  :plugins:
+  - :ignore
+  - :callback
+  :treat_as:
+    uint8: HEX8
+    uint16: HEX16
+    uint32: UINT32
+    int8: INT8
+    bool: UINT8
+  :mock_path: build/test/mocks
+  :verbosity: 3
+  :unity_helper: false
+:cexception:
+  :vendor_path: D:/sasha/temp/gits/fwProjectTemplate/vendor/ceedling/vendor
+  :defines: []
+:test_runner:
+  :includes: []
+  :file_suffix: _runner
+:tools:
+  :release_compiler:
+    :executable: xc32-gcc
+    :name: release compiler
+    :arguments:
+    - "-g"
+    - "-x c"
+    - "-c ${1}"
+    - "-mprocessor=32MX795F512L"
+    - "-D$": COLLECTION_DEFINES_RELEASE_AND_VENDOR
+    - "-I$": COLLECTION_PATHS_SOURCE_INCLUDE_VENDOR
+    - "-I$": COLLECTION_PATHS_RELEASE_TOOLCHAIN_INCLUDE
+    - "-o ${2}"
+    - "-Wall"
+    - "-O1"
+    - "-MMD -MP -MF ${4}"
+    - "-MT ${2}"
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :release_linker:
+    :executable: xc32-gcc
+    :name: release linker
+    :arguments:
+    - "-mprocessor=32MX795F512L"
+    - "-o ${2}"
+    - "${1}"
+    - "-Wl,--defsym=__MPLAB_BUILD=1,--defsym=_min_heap_size=2000,--defsym=_min_stack_size=2000,-Map=./build/release/sua50.map
+      --report-mem"
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :test_compiler:
+    :executable: gcc.exe
+    :name: default_test_compiler
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - ''
+    - ''
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-DGNU_COMPILER"
+    - "-g"
+    - ''
+    - -c "${1}"
+    - -o "${2}"
+    - "-MMD"
+    - -MF "${4}"
+  :test_fixture:
+    :executable: "${1}"
+    :name: default_test_fixture
+    :stderr_redirect: :auto
+    :background_exec: :none
+    :optional: false
+    :arguments: []
+  :test_linker:
+    :executable: gcc.exe
+    :name: default_test_linker
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - ''
+    - ''
+    - ''
+    - '"${1}"'
+    - "${5}"
+    - -o "${2}"
+    - ''
+    - "${4}"
+    - ''
+  :test_file_preprocessor:
+    :executable: gcc.exe
+    :name: default_test_file_preprocessor
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - ''
+    - ''
+    - "-E"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-D$": DEFINES_TEST_PREPROCESS
+    - "-DGNU_COMPILER"
+    - '"${1}"'
+    - -o "${2}"
+  :test_includes_preprocessor:
+    :executable: gcc.exe
+    :name: default_test_includes_preprocessor
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - ''
+    - ''
+    - "-E"
+    - "-MM"
+    - "-MG"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-D$": DEFINES_TEST_PREPROCESS
+    - "-DGNU_COMPILER"
+    - '"${1}"'
+  :release_assembler:
+    :executable: as.exe
+    :name: default_release_assembler
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - ''
+    - ''
+    - -I"$": COLLECTION_PATHS_SOURCE_AND_INCLUDE
+    - '"${1}"'
+    - -o "${2}"
+:test_compiler:
+  :arguments: []
+:test_linker:
+  :arguments: []
+:test_fixture:
+  :arguments: []
+  :link_objects: []
+:test_includes_preprocessor:
+  :arguments: []
+:test_file_preprocessor:
+  :arguments: []
+:test_dependencies_generator:
+  :arguments: []
+:release_compiler:
+  :arguments: []
+:release_linker:
+  :arguments: []
+:release_assembler:
+  :arguments: []
+:release_dependencies_generator:
+  :arguments: []
+:plugins:
+  :load_paths:
+  - vendor/ceedling/plugins
+  - vendor/ceedling/lib/../plugins
+  :enabled:
+  - stdout_pretty_tests_report
+  - module_generator
+  - raw_output_report
+  - xml_tests_report
+  :display_raw_test_results: false
+  :stdout_pretty_tests_report_path: vendor/ceedling/plugins/stdout_pretty_tests_report
+  :module_generator_path: vendor/ceedling/plugins/module_generator
+  :raw_output_report_path: vendor/ceedling/plugins/raw_output_report
+  :xml_tests_report_path: vendor/ceedling/plugins/xml_tests_report
+:test_build:
+  :use_assembly: false
+:gcov:
+  :reports:
+  - HtmlDetailed
+  :gcovr:
+    :html_medium_threshold: 75
+    :html_high_threshold: 90
+:module_generator:
+  :project_root: "./"
+  :source_root: src/
+  :test_root: test/

@@ -2,37 +2,78 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Ceedling Build",
+			"label": "Build",
 			"type": "shell",
 			"command": "ceedling release",
 			"options": {
 				"cwd": "${workspaceFolder}",
 				"shell": {
 					"executable": "cmd.exe",
-					"args": ["/C"]
+					"args": [
+						"/C"
+					]
 				}
-            }, 
+			},
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			}
 		},
 		{
-			"label": "Ceedling Clean",
+			"label": "Clean",
 			"type": "shell",
 			"command": "ceedling clean",
 			"options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
 					"executable": "cmd.exe",
-					"args": ["/C"]
+					"args": [
+						"/C"
+					]
 				}
-            }, 
+			},
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
-            "problemMatcher": []
+			"problemMatcher": []
+		},
+		{
+			"label": "Prepare Static Analyzer",
+			"type": "shell",
+			"command": "${workspaceFolder}\\tools\\pvs-studio\\windows\\How-To-Use-PVS-Studio-FREE -c 2 ${workspaceFolder}\\src",
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Run Static Analyzer",
+			"type": "shell",
+			"command": "CLMonitor.exe monitor & waitfor aaa /t 5 2> NUL & ceedling clean & ceedling release & CLMonitor.exe analyze -l \"${workspaceFolder}\\build\\logs\\pvs-studio\\test.plog\"",
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
 		},
 		{
 			"label": "Erase Flash MCU",
@@ -42,9 +83,11 @@
 				"cwd": "${workspaceRoot}\\build\\temp",
 				"shell": {
 					"executable": "cmd.exe",
-					"args": ["/C"]
+					"args": [
+						"/C"
+					]
 				}
-			}, 
+			},
 			"group": {
 				"kind": "test",
 				"isDefault": true
@@ -59,9 +102,11 @@
 				"cwd": "${workspaceRoot}\\build\\temp",
 				"shell": {
 					"executable": "cmd.exe",
-					"args": ["/C"]
+					"args": [
+						"/C"
+					]
 				}
-			}, 
+			},
 			"group": {
 				"kind": "test",
 				"isDefault": true
@@ -76,9 +121,11 @@
 				"cwd": "${workspaceRoot}\\build\\temp",
 				"shell": {
 					"executable": "cmd.exe",
-					"args": ["/C"]
+					"args": [
+						"/C"
+					]
 				}
-			}, 
+			},
 			"group": {
 				"kind": "test",
 				"isDefault": true
@@ -93,14 +140,54 @@
 				"cwd": "${workspaceRoot}\\build\\temp",
 				"shell": {
 					"executable": "cmd.exe",
-					"args": ["/C"]
+					"args": [
+						"/C"
+					]
 				}
-			}, 
+			},
 			"group": {
 				"kind": "test",
 				"isDefault": true
 			},
 			"problemMatcher": []
-		},		
+		},
+		{
+			"label": "Generate Documentation",
+			"type": "shell",
+			"command": "doxygen Doxygen.conf",
+			"options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Linter",
+			"type": "shell",
+			"command": "${workspaceRoot}\\tools\\clang-format\\windows\\clang-format -i -style=Microsoft ${workspaceRoot}\\src\\**",
+			"options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		}
 	]
 }

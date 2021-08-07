@@ -1,7 +1,7 @@
-ENV['LINTER'] = "tools/clang-format/windows/clang-format.exe"
+ENV['LINTER'] = "clang-format"
 ENV['PVS_FREE_UTILS'] = "tools/pvs-studio/windows/How-To-Use-PVS-Studio-FREE.exe"
 ENV['LOGS_ROOT'] = "build/logs/"
-ENV['SRC_ROOT'] = "src/user"
+ENV['SRC_ROOT'] = "src"
 
 PROJECT_CEEDLING_ROOT = "vendor/ceedling"
 load "#{PROJECT_CEEDLING_ROOT}/lib/ceedling.rb"
@@ -26,9 +26,11 @@ desc "Run linter"
 task :linter do
   puts Dir.pwd
   files = Dir["#{ENV['SRC_ROOT']}/**/*.c"]
+  # puts "#{files}"
   files.each do |file_name|
     if !File.directory? file_name
-      cmd = "#{ENV['LINTER']} -i --style=Microsoft #{file_name}"
+      cmd = "#{ENV['LINTER']} -i -style=Mozilla #{file_name}"
+      sh "#{cmd}"
       puts "#{cmd}"
     end
   end

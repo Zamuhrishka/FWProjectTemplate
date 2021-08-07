@@ -1,0 +1,18 @@
+:defines:
+  :common: &common_defines
+  :test:
+    - *common_defines
+    - TEST
+  :test_preprocess:
+    - *common_defines
+    - TEST  
+  :release:
+  - DEBUG_COLOR_SUPPORT
+  - COMPASS_DEBUG_ENABLE
+  - GSP_DEBUG_ENABLE
+  - MODEM_DEBUG_ENABLE
+  - NET_DEBUG_ENABLE
+  - MOTION_DEBUG_ENABLE
+  - CMAN_DEBUG_ENABLE
+  - SUAP_DEBUG_ENABLE
+  - CMD_HANDLER_DEBUG_ENABLE     

@@ -19,7 +19,7 @@ end
 
 desc "Run static analyzer"
 task :pvstudio do  
-  sh "CLMonitor.exe monitor & waitfor aaa /t 5 2> NUL & ceedling clean & ceedling project:prj-x86 options:release release & CLMonitor.exe analyze -l \"#{ENV['LOGS_ROOT']}pvs.plog\""
+  sh "CLMonitor.exe monitor & waitfor aaa /t 5 2> NUL & ceedling clean & ceedling project:project_x86 options:release release & CLMonitor.exe analyze -l \"#{ENV['LOGS_ROOT']}pvs.plog\""
 end
 
 desc "Run linter" 

@@ -4,7 +4,7 @@
 		{
 			"label": "PIC32 Release Build",
 			"type": "shell",
-			"command": "ceedling project:prj-pic32 options:release release",
+			"command": "ceedling project:project_pic32 options:release release",
 			"options": {
 				"cwd": "${workspaceFolder}",
 				"shell": {
@@ -22,7 +22,7 @@
 		{
 			"label": "PIC32 Debug Build",
 			"type": "shell",
-			"command": "ceedling project:prj-pic32 options:debug release",
+			"command": "ceedling project:project_pic32 options:debug release",
 			"options": {
 				"cwd": "${workspaceFolder}",
 				"shell": {
@@ -40,7 +40,7 @@
 		{
 			"label": "x86 Release Build",
 			"type": "shell",
-			"command": "ceedling project:prj-x86 options:release release",
+			"command": "ceedling project:project_x86 options:release release",
 			"options": {
 				"cwd": "${workspaceFolder}",
 				"shell": {
@@ -58,7 +58,7 @@
 		{
 			"label": "x86 Debug Build",
 			"type": "shell",
-			"command": "ceedling project:prj-x86 options:debug release",
+			"command": "ceedling project:project_x86 options:debug release",
 			"options": {
 				"cwd": "${workspaceFolder}",
 				"shell": {

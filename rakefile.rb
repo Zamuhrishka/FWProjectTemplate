@@ -1,4 +1,4 @@
-ENV['LINTER'] = "clang-format"
+ENV['LINTER'] = "tools/clang-format/windows/clang-format.exe"
 ENV['PVS_FREE_UTILS'] = "tools/pvs-studio/windows/How-To-Use-PVS-Studio-FREE.exe"
 ENV['LOGS_ROOT'] = "build/logs/"
 ENV['SRC_ROOT'] = "src"
@@ -29,7 +29,8 @@ task :linter do
   # puts "#{files}"
   files.each do |file_name|
     if !File.directory? file_name
-      cmd = "#{ENV['LINTER']} -i -style=Mozilla #{file_name}"
+      # cmd = "#{ENV['LINTER']} -i -style=Microsoft #{file_name}"
+      cmd = "#{ENV['LINTER']} -i #{file_name}"
       sh "#{cmd}"
       puts "#{cmd}"
     end

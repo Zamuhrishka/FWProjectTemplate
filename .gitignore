@@ -22,7 +22,7 @@
 *.dylib
 
 # Executables
-*.exe
+#*.exe
 *.out
 *.app
 *.i*86
@@ -35,6 +35,8 @@
 
 # Folders
 /build
+/tools/pvs-studio/windows/
+!tools/clang-format/windows/PVS-Studio_setup.exe
 
 # Temporary files
 *.tmp

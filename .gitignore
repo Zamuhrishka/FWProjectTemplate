@@ -34,16 +34,7 @@
 *.dSYM/
 
 # Folders
-/sua50.X/
-/test_sua50.X/
-/documentation/
-/doc/*
-/prj/test_sua50.X/
-/prj/sua50.X/
-#/.vscode
 /build
-/tools
-/docs
 
 # Temporary files
 *.tmp

@@ -74,6 +74,42 @@
 			}
 		},
 		{
+			"label": "STM32 Release Build",
+			"type": "shell",
+			"command": "ceedling project:project_stm32 options:release release",
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "STM32 Debug Build",
+			"type": "shell",
+			"command": "ceedling project:project_stm32 options:debug release",
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
 			"label": "Clean",
 			"type": "shell",
 			"command": "ceedling clean",
@@ -260,6 +296,82 @@
 				"isDefault": true
 			},
 			"problemMatcher": []
-		}
+		},
+		{
+			"label": "STM32 Write Flash",
+			"type": "shell",
+			"command": "st-flash write pku.hex 0x8000000 & st-flash reset",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Erase Flash",
+			"type": "shell",
+			"command": "st-flash erase & st-flash reset",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Read Flash",
+			"type": "shell",
+			"command": "st-flash --area=option read ${workspaceRoot}\\build\\release\\read.hex",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Reset",
+			"type": "shell",
+			"command": "st-flash reset",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
 	]
 }

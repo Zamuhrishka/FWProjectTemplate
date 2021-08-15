@@ -12,8 +12,8 @@ task :doxygen do
   sh "doxygen Doxygen.conf"
 end
 
-desc "Prepare static analyzer"
-task :pvstudio_prepare do  
+desc "Add PVS-Studio Special Comment"
+task :pvstudio_special_comment do  
   sh "#{ENV['PVS_FREE_UTILS']} --c 2 #{ENV['SRC_ROOT']}"
 end
 

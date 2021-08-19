@@ -1,0 +1,51 @@
+{
+    // Используйте IntelliSense для понимания связанных свойств. 
+    // Наведите курсор, чтобы увидеть описание существующих свойств.
+    // Для получения дополнительной информации, пожалуйста, посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "ARM Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "D:/sasha/temp/gits/fwProjectTemplate/build/release/pku.elf",// Отлаживаемая программа (указанная в параметрах ниже, здесь не имеет смысла)
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false, // Отображать ли окно консоли во время отладки
+            "MIMode": "gdb",
+            "miDebuggerPath": "arm-none-eabi-gdb",// Оригинальный путь инструмента отладки
+            "targetArchitecture": "arm", // Целевая архитектура, этот параметр должен иметь
+            "setupCommands": [// После входа в GDB некоторые настройки выполняются автоматически  
+                {
+                    "description": "Выберите файл отладки (.elf) для GDB",
+                    "text": "file D:/sasha/temp/gits/fwProjectTemplate/build/release/pku.elf",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Подключиться к серверу GDB",
+                    "text": "target remote localhost:3333",                                 
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Reset MCU",
+                    "text": "monitor reset",                                              
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Halt",
+                    "text": "monitor halt",                                                  
+                    "ignoreFailures": false
+                },
+                {
+                    "description":"Загрузить код в MCU",
+                    "text": "load" ,              
+                    "ignoreFailures": false                                      
+                }
+            ],
+            // "preLaunchTask": "build", // Задачи, предварительно выполненные перед отладкой, находятся в tasks.json
+        }
+    ]
+}

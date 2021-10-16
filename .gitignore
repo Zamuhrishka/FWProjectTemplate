@@ -1,9 +1,15 @@
+### C ###
 # Object files
 *.o
 *.ko
 *.obj
 *.elf
 *o.d
+
+# Linker output
+*.ilk
+*.map
+*.exp
 
 # Precompiled Headers
 *.gch
@@ -22,7 +28,7 @@
 *.dylib
 
 # Executables
-#*.exe
+*.exe
 *.out
 *.app
 *.i*86
@@ -33,10 +39,25 @@
 # Debug files
 *.dSYM/
 
-# Folders
-/build
-/tools/pvs-studio/windows/
-!tools/clang-format/windows/PVS-Studio_setup.exe
-
 # Temporary files
 *.tmp
+
+# VSCode
+/.vscode/c_cpp_properties.json
+/.vscode/settings.json
+
+# Folders
+build/
+src/Core/
+src/Drivers/
+# /tools/pvs-studio/windows
+tools/ejtagproxy/
+tools/gdb/
+tools/openocd/
+tools/pickit3/
+tools/stlink/
+
+# Exclude some files 
+!/tools/clang-format/windows/clang-format.exe
+!/tools/clang-tidy/clang-tidy.exe
+!/tools/pvs-studio/windows/How-To-Use-PVS-Studio-FREE.exe

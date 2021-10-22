@@ -20,7 +20,40 @@ If you decide use this template in your firmware project then you need do next s
 - [Install](https://github.com/ThrowTheSwitch/Ceedling) Ceedling on your machine;
 - Add your firmware source code into `src\` folder;
 - Add your unit tests into `test\src` folder;
+
+## Project Structure
+
+* __.vscode__ - Folder with VSCode config files
+* __build__ - Folder with builds frimware
+* __docs__ - Folder with project documentation
+* __linker__ - Folder with linker scripts
+* __options__ - Folder store config files for ceedling build system
+* __src__ - Folder with source code of project
+* __test__ - Folder which contain all necessary for unit testing
+    * __fake__ - using a system that behaves very similar to the real one, but avoids costly or destructive actions
+    * __mock__ - using a system with the same interface as the real one, but which in addition registers interactions for subsequent monitoring and verification statements
+    * __src__ - source code of unit tests
+    * __stubs__ - using a predefined value as a response instead of receiving a response from a live system
+    * __support__ - various functions, macros to extend the functionality of the basic framework
+* __tools__ - Folder with several useful binary utils
+    * __clang-format__ - Tool to automatically format C/C++/Objective-C code
+    * __clang-tidy__ - Clang-based C++ “linter” tool
+    * __pvs-studio__ - Static analyser for C/C++
+* __vendor__ - Folder store binaries utils of ceedling framework
+* _.clang-format_ - Config file for clang-format util
+* _.gitignore_ - Config file for git ignoring
+* _ceedling.cmd_ - Command script for Ceedling build system
+* _Doxygen.conf_ - Config file for doxygen document generator
+* _project.yml_ - Config file for Ceedling build system (Common)
+* _project_pic32.yml_ - Config file for Ceedling build system (PIC32)
+* _project_stm32.yml_ - Config file for Ceedling build system (STM32)
+* _project_x86.yml_ - Config file for Ceedling build system (x86)
+* _pvs-studio.bat_ - Script for running PVStudio static analyzer
+* _PVS-Studio.cfg_ - Config file for PVStudio static analyzer
+* _rakefile.rb_ - Config and tasks file for Ceedling build system
+
 ## Usage
+
 ### CLI
 
 **Build and program the firmware**
@@ -90,38 +123,6 @@ If you decide use this template in your firmware project then you need do next s
 | `STM32 Read Flash`   |         |
 | `STM32 Reset`   |         |
 | `Openocd Run`   |         |
-
-
-## Project Structure
-
-* __.vscode__ - Folder with VSCode config files
-* __build__ - Folder with builds frimware
-* __docs__ - Folder with project documentation
-* __linker__ - Folder with linker scripts
-* __options__ - Folder store config files for ceedling build system
-* __src__ - Folder with source code of project
-* __test__ - Folder which contain all necessary for unit testing
-    * __fake__ - using a system that behaves very similar to the real one, but avoids costly or destructive actions
-    * __mock__ - using a system with the same interface as the real one, but which in addition registers interactions for subsequent monitoring and verification statements
-    * __src__ - source code of unit tests
-    * __stubs__ - using a predefined value as a response instead of receiving a response from a live system
-    * __support__ - various functions, macros to extend the functionality of the basic framework
-* __tools__ - Folder with several useful binary utils
-    * __clang-format__ - Tool to automatically format C/C++/Objective-C code
-    * __clang-tidy__ - Clang-based C++ “linter” tool
-    * __pvs-studio__ - Static analyser for C/C++
-* __vendor__ - Folder store binaries utils of ceedling framework
-* _.clang-format_ - Config file for clang-format util
-* _.gitignore_ - Config file for git ignoring
-* _ceedling.cmd_ - Command script for Ceedling build system
-* _Doxygen.conf_ - Config file for doxygen document generator
-* _project.yml_ - Config file for Ceedling build system (Common)
-* _project_pic32.yml_ - Config file for Ceedling build system (PIC32)
-* _project_stm32.yml_ - Config file for Ceedling build system (STM32)
-* _project_x86.yml_ - Config file for Ceedling build system (x86)
-* _pvs-studio.bat_ - Script for running PVStudio static analyzer
-* _PVS-Studio.cfg_ - Config file for PVStudio static analyzer
-* _rakefile.rb_ - Config and tasks file for Ceedling build system
 
 ## Third-party software
 

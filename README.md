@@ -25,73 +25,108 @@ If you decide use this template in your firmware project then you need do next s
 
 **Build and program the firmware**
 
-| Command      | Description |
-| :---  | :---  |
-| `ceedling project:project_pic32 options:release release`     | Build pic32 release firmware       |
-| `ceedling project:project_pic32 options:debug release`   | Build pic32 debug firmware        |
-| `ceedling project:project_stm32 options:release release`   | Build stm32 release firmware        |
-| `ceedling project:project_stm32 options:debug release`   | Build stm32 debug firmware        |
-| `ceedling project:project_x86 options:release release`   | Build x86 release firmware        |
-| `ceedling project:project_x86 options:debug release`   | Build x86 debug firmware        |
-| `ceedling clean`   | Build Clean        |
+```bash
+#Build pic32 release firmware
+ceedling project:project_pic32 options:release release
+
+#Build pic32 debug firmware
+ceedling project:project_pic32 options:debug release
+
+#Build stm32 release firmware
+ceedling project:project_stm32 options:release release
+
+#Build stm32 debug firmware
+ceedling project:project_stm32 options:debug release
+
+#Build x86 release firmware
+ceedling project:project_x86 options:release release
+
+#Build x86 debug firmware
+ceedling project:project_x86 options:debug release
+
+#Build Clean
+ceedling clean
+```
 
 **Build and run the unit tests**
 
-| Command      | Description |
-| :---  | :---  |
-| `ceedling test:all`     | Build and run all unit tests       |
+```bash
+#Build and run all unit tests
+ceedling test:all
+```
 
 **Other utils**
 
-| Command      | Description |
-| :---  | :---  |
-| `ceedling pvstudio`     | Run Static Analyser (PVStudio)       |
-| `ceedling doxygen`   | Run documents generator        |
-| `ceedling linter`   | Run linter        |
+```bash
+#Run Static Analyser (PVStudio)
+ceedling pvstudio
+
+#Run documents generator
+ceedling doxygen
+
+#Run linter
+ceedling linter
+```
 
 **Flash firmware**
 
-| Command      | Description |
-| :---  | :---  |
-| `ipecmd.exe -TPPK3 -{device} -E -OL`     | PIC32MX Erase Flash      |
-| `ipecmd.exe -TPPK3 -{device} -F${file} -M -OL`   | PIC32MX Write Flash        |
-| `ipecmd.exe -TPPK3 -{device} -GF${file}`   | PIC32MX Read Flash        |
-| `ipecmd.exe -TPPK3 -{device} -OL`   | PIC32MX Reset        |
-| `st-flash write ${file} ${addr} & st-flash reset`   | STM32 Write Flash         |
-| `st-flash erase & st-flash reset`   | STM32 Erase Flash         |
-| `st-flash --area=option read ${file}`   | STM32 Read Flash         |
-| `st-flash reset`   | STM32 Reset         |
-| `openocd -f ${file}.cfg`   | Openocd Run         |
-| `JLink.exe -Device {device} -If SWD -Speed 4000 ${file}.jlink`   | STM32 Write Flash         |
+```bash
+#PIC32MX Erase Flash
+ipecmd.exe -TPPK3 -{device} -E -OL
 
+#PIC32MX Write Flash
+ipecmd.exe -TPPK3 -{device} -F${file} -M -OL
+
+#PIC32MX Read Flash
+ipecmd.exe -TPPK3 -{device} -GF${file}
+
+#PIC32MX Reset
+ipecmd.exe -TPPK3 -{device} -OL
+
+#STM32 Write Flash
+st-flash write ${file} ${addr} & st-flash reset
+
+#STM32 Erase Flash
+st-flash erase & st-flash reset
+
+#STM32 Read Flash
+st-flash --area=option read ${file}
+
+#STM32 Reset
+st-flash reset
+
+#Openocd Run
+openocd -f ${file}.cfg
+
+#STM32 Write Flash
+JLink.exe -Device {device} -If SWD -Speed 4000 ${file}.jlink
+```
 ### VSCode Tasks
 
-| Task      | Description |
-| :---  | :---  |
-| `PIC32 Release Build`     |       |
-| `PIC32 Debug Build`   |         |
-| `x86 Release Build`   |         |
-| `x86 Debug Build`   |         |
-| `STM32 Release Build`   |         |
-| `STM32 Debug Build`   |         |
-| `Clean`   |         |
-| `Run Unit Tests`   |         |
-| `Add PVS-Studio Special Comment`   |         |
-| `Run Static Analyzer`   |         |
-| `Generate Documentation`   |         |
-| `Run Linter`   |         |
-| `PIC32MX Erase Flash`   |         |
-| `STM32 Debug Build`   |         |
-| `PIC32MX Write Flash`   |         |
-| `PIC32MX Read Flash`   |         |
-| `PIC32MX Reset`   |         |
-| `STM32 Write Flash`   |         |
-| `STM32 Erase Flash`   |         |
-| `STM32 Read Flash`   |         |
-| `STM32 Reset`   |         |
-| `Openocd Run`   |         |
-
-
+```bash
+PIC32 Release Build
+PIC32 Debug Build
+x86 Release Build
+x86 Debug Build
+STM32 Release Build
+STM32 Debug Build
+Clean
+Run Unit Tests
+Add PVS-Studio Special Comment
+Run Static Analyzer
+Generate Documentation
+Run Linter
+PIC32MX Erase Flash
+STM32 Debug Build
+PIC32MX Write Flash
+PIC32MX Read Flash
+PIC32MX Reset
+STM32 Write Flash
+STM32 Erase Flash
+STM32 Read Flash
+STM32 Reset
+Openocd Run
+```
 ## Project Structure
 
 * __.vscode__ - Folder with VSCode config files

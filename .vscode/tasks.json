@@ -386,6 +386,23 @@
 					]
 				}
 			}
-		}
+		},
+		{
+            "label": "Download",
+            "type": "shell",
+            "command": "JLink.exe -Device STM32F042K6 -If SWD -Speed 4000 JLink\\FlashMCU.jlink",
+            "options": {
+                "cwd": "${workspaceRoot}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [ "/C" ]
+                }
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
 	]
 }

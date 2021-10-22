@@ -25,6 +25,36 @@
             ],
             "cStandard": "c11",
             "cppStandard": "c++11"
+        },
+        {
+            "name": "Smart Relay App",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                // "c:/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/include",
+                // "c:/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/include-fixed",
+                // "${workspaceRoot}/libs/FreeRTOS-Kernel/include",
+                // "${workspaceRoot}/libs/FreeRTOS-Kernel/portable/GCC/ARM_CM0",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/CMSIS/Core/Include",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/CMSIS/Device/ST/STM32F0xx/Include",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/CMSIS/Include",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/STM32F0xx_HAL_Driver/Inc"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "USE_HAL_DRIVER",
+                "STM32F407VGTX"
+            ],
+            "intelliSenseMode": "${default}",
+            "compilerPath": "${PATH}/arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb",
+                "--target=arm-arm-none-eabi"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11"
         }
     ],
     "version": 4

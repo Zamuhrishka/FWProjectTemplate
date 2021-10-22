@@ -41,6 +41,17 @@
                     "ignoreFailures": false                                      
                 }
             ]
+        },
+        {
+            "name": "STM32 Cortex Debug",
+            "type": "cortex-debug",
+            "device": "Cortex-M0",
+            "executable": "D:${pathSeparator}sasha${pathSeparator}temp${pathSeparator}gits${pathSeparator}fwProjectTemplate${pathSeparator}build${pathSeparator}release${pathSeparator}pku.elf",
+            "servertype": "jlink",
+            "interface": "swd",
+            "request": "launch",
+            //путь к файлу описания регистров микроконтроллера (SVD файл), его можно найти в папке с файлами поддержки семейства микроконтроллеров для STM32CubeMx
+            "svdFile": "./JLink/STM32F042x.svd"
         }
     ]
 }

@@ -88,6 +88,13 @@ ceedling clean
 ceedling test:all
 ```
 
+**Build and run gcov coverage**
+
+```bash
+#Build and run gcov coverage
+ceedling gcov:all utils:gcov
+```
+
 **Other utils**
 
 ```bash

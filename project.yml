@@ -63,16 +63,118 @@
     bool:     UINT8
 
 :gcov:
+  :utilities:
+    - gcovr           # Use gcovr to create the specified reports (default).
   :reports:
     - HtmlDetailed
   :gcovr:
     :html_medium_threshold: 75
     :html_high_threshold: 90
+    :branches: true
+    :print_summary: true
+
+:module_generator:
+  :project_root: ./
+  :source_root: src/
+  :inc_root: src/
+  :test_root: test/
 
 :tools:
   :release_compiler:
     :executable: gcc
     :name: 'release compiler'
+  :gcov_compiler:
+    :executable: gcc
+    :arguments:
+      - -g
+      - -fprofile-arcs
+      - -ftest-coverage
+      - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+      - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+      - -D$: COLLECTION_DEFINES_TEST_AND_VENDOR
+      - -DGCOV_COMPILER
+      - -DCODE_COVERAGE
+      - -c "${1}"
+      - -o "${2}"
+  :gcov_linker:
+    :executable: gcc
+    :arguments:
+      - -fprofile-arcs
+      - -ftest-coverage
+      - ${1}
+      - -o ${2}
+      - ${4}
+      - ${5}
+  :gcov_fixture:
+    :executable: ${1}
+  :gcov_report:
+    :executable: gcov
+    :arguments:
+      - -n
+      - -p
+      - -b
+      - -o "$": GCOV_BUILD_OUTPUT_PATH
+      - "\"${1}\""
+  :gcov_gcov_post_report:
+    :executable: gcov
+    :optional: TRUE
+    :arguments:
+      - ${1}
+  :gcov_gcovr_post_report:
+    :executable: gcovr
+    :optional: TRUE
+    :arguments:
+      - ${1}
+  :gcov_report_generator_post_report:
+    :executable: reportgenerator
+    :optional: TRUE
+    :arguments:
+      - ${1}
+  # :gcov_post_report_basic:
+  #   :executable: ../../Tools/gcovr/scripts/gcovr
+  #   :optional: TRUE
+  #   :arguments:
+  #       - --object-directory="$": GCOV_BUILD_OUTPUT_PATH
+  #       - -v
+  #       - -p
+  #       - -b
+  #       - -e ".*mock_.*|.*Test_.*"
+  #       - -e ".*Support/Fake.*"
+  #       - -e ".*Build/Mission.*"
+  #       - -e ".*BECommon/.*"
+  #       - -e ".*UnitTest/.*"
+  #       - -e ".*ipcinline/.*"
+  #       - -e ".*FILTest/.*"
+  #       - -e ".*Tools/.*"
+# To exclude directories from gcov report generation use lines similar to the one below
+# This line when uncommented makes gcovr exclude all the files that have FML/LBM anywhere
+# in their path
+        # - --xml-pretty
+        # - -r .
+        # - -o  "$": GCOV_ARTIFACTS_FILE_XML
+#   :gcov_post_report_advanced:
+#     :executable: ../../Tools/gcovr/scripts/gcovr
+#     :optional: TRUE
+#     :arguments:
+#         - --object-directory="$": GCOV_BUILD_OUTPUT_PATH
+#         - -v
+#         - -p
+#         - -b
+#         - -e ".*mock_.*|.*Test_.*"
+#         - -e ".*Support/Fake.*"
+#         - -e ".*Build/Mission.*"
+#         - -e ".*UnitTest/.*"
+#         - -e ".*ipcinline/.*"
+#         - -e ".*FILTest/.*"
+#         - -e ".*Tools/.*"
+# # To exclude directories from gcov report generation use lines similar to the one below
+# # This line when uncommented makes gcovr exclude all the files that have FML/LBM anywhere
+# # in their path
+# #       - -e ".*FML/.*"
+#         - --html-details
+#         - --html
+#         - -r .
+#         - -o  "$": GCOV_ARTIFACTS_FILE
 
 # LIBRARIES
 # These libraries are automatically injected into the build process. Those specified as
@@ -95,4 +197,9 @@
     - raw_output_report
     - xml_tests_report
     - command_hooks
+    - colour_report
+    - gcov
+    - dependencies
+    - compile_commands_json
+    - warnings_report
 ...

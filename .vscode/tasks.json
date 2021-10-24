@@ -147,6 +147,24 @@
 			}
 		},
 		{
+			"label": "Generate Coverage Report",
+			"type": "shell",
+			"command": "ceedling gcov:all utils:gcov",
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
 			"label": "Add PVS-Studio Special Comment",
 			"type": "shell",
 			"command": "${workspaceFolder}\\tools\\pvs-studio\\windows\\How-To-Use-PVS-Studio-FREE -c 2 ${workspaceFolder}\\src",

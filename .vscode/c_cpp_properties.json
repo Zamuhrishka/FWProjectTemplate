@@ -29,7 +29,7 @@
         {
             "name": "Smart Relay App",
             "includePath": [
-                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/src/**"
                 // "c:/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/include",
                 // "c:/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/include-fixed",
                 // "${workspaceRoot}/libs/FreeRTOS-Kernel/include",

@@ -31,7 +31,7 @@ If you decide use this template in your firmware project then you need do next s
 - [linker](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/linker) - linker scripts
 - [options](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/options) - config files for ceedling build system
   - [debug.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/debug.yml) - build options for debug configuration
-  - [release.yml.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/release.yml) - build options for release configuration
+  - [release.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/release.yml) - build options for release configuration
 - [src](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/src) - source code of project
 - [test](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test) - folder which contain all necessary for unit testing
   - [fake](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/fake) - using a system that behaves very similar to the real one, but avoids costly or destructive actions

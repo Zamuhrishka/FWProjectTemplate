@@ -42,7 +42,7 @@ If you decide use this template in your firmware project then you need do next s
 - [tools](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools) - several useful binary utils
   - [clang-format](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/clang-format) - tool to automatically format C/C++/Objective-C code
   - [clang-tidy](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/clang-tidy) - clang-based C++ “linter” tool
-  - [pvs-studio](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/pvs-studio - static analyser for C/C++
+  - [pvs-studio](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/pvs-studio) - static analyser for C/C++
 - [vendor](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/vendor) -  binaries utils of ceedling framework
 - [.clang-format](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/.clang-format) - config file for clang-format util
 - [.gitignore](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/..gitignore) - config file for git ignoring

@@ -1,7 +1,7 @@
 # Firmware Project Template
 
 This set of utils, folders, config files which can be used as template for each new firmware project.
-This template based on [Ceedling Test Framework](https://github.com/ThrowTheSwitch/Ceedling). This build system used for build as firmware and tests.
+This template based on [Ceedling Build System](https://github.com/ThrowTheSwitch/Ceedling). This build system used for build as firmware and tests.
 
 ## Table of Contents
 

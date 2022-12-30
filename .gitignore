@@ -10,6 +10,7 @@
 *.ilk
 *.map
 *.exp
+*.ld
 
 # Precompiled Headers
 *.gch
@@ -42,12 +43,9 @@
 # Temporary files
 *.tmp
 
-# VSCode
-# /.vscode/c_cpp_properties.json
-# /.vscode/settings.json
-
 # Folders
 build/
+.vscode/
 src/Core/
 src/Drivers/
 # /tools/pvs-studio/windows

@@ -48,6 +48,7 @@
 
 # Folders
 build/
+.vscode/
 src/Core/
 src/Drivers/
 # /tools/pvs-studio/windows

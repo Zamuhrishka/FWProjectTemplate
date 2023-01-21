@@ -1,44 +1,29 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "STM32 Debug",
+            "name": "Windows Debug Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "D:${pathSeparator}sasha${pathSeparator}temp${pathSeparator}gits${pathSeparator}fwProjectTemplate${pathSeparator}build${pathSeparator}release${pathSeparator}pku.elf",
+            "program": "${workspaceFolder}${pathSeparator}build${pathSeparator}release${pathSeparator}project_name.exe",
             "args": [],
-            "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "arm-none-eabi-gdb",
-            "targetArchitecture": "arm",
-            "setupCommands": [  
+            "stopAtEntry": true,
+            "preLaunchTask": "x86 Debug Build",
+            "setupCommands": [
                 {
-                    "description": "Choose the file for debuging",
-                    "text": "file D:/sasha/temp/gits/fwProjectTemplate/build/release/pku.elf",
-                    "ignoreFailures": false
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
                 },
                 {
-                    "description": "Connect to the GDB server",
-                    "text": "target remote localhost:3333",                                 
-                    "ignoreFailures": false
-                },
-                {
-                    "description": "Reset MCU",
-                    "text": "monitor reset",                                              
-                    "ignoreFailures": false
-                },
-                {
-                    "description": "Halt MCU",
-                    "text": "monitor halt",                                                  
-                    "ignoreFailures": false
-                },
-                {
-                    "description":"Load code into MCU",
-                    "text": "load" ,              
-                    "ignoreFailures": false                                      
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
                 }
             ]
         },

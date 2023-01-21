@@ -2,242 +2,225 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "PIC32 Release Build",
+			"label": "Clean",
 			"type": "shell",
-			"command": "ceedling project:project_pic32 options:release release",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"command": "ceedling clean",
 			"group": {
 				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"label": "PIC32 Debug Build",
-			"type": "shell",
-			"command": "ceedling project:project_pic32 options:debug release",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
+				"isDefault": false
 			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
+			"problemMatcher": []
 		},
 		{
 			"label": "x86 Release Build",
 			"type": "shell",
-			"command": "ceedling project:project_x86 options:release release",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
+			"command": "ceedling",
+			"args": [
+				"project:project_x86",
+				{
+					"value": "options:release release",
+					"quoting": "escape"
 				}
-			},
+			],
 			"group": {
 				"kind": "build",
-				"isDefault": true
-			}
+				"isDefault": false
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling x86 Release Build"
 		},
 		{
 			"label": "x86 Debug Build",
 			"type": "shell",
-			"command": "ceedling project:project_x86 options:debug release",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
+			"command": "ceedling",
+			"args": [
+				"project:project_x86",
+				{
+					"value": "options:debug release",
+					"quoting": "escape"
 				}
-			},
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			}
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling x86 Debug Build"
 		},
 		{
 			"label": "STM32 Release Build",
 			"type": "shell",
-			"command": "ceedling project:project_stm32 options:release release",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
+			"command": "ceedling",
+			"args": [
+				"project:project_stm32",
+				{
+					"value": "options:release release",
+					"quoting": "escape"
 				}
-			},
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			}
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling STM32 Release Build"
 		},
 		{
 			"label": "STM32 Debug Build",
 			"type": "shell",
-			"command": "ceedling project:project_stm32 options:debug release",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
+			"command": "ceedling",
+			"args": [
+				"project:project_stm32",
+				{
+					"value": "options:debug release",
+					"quoting": "escape"
 				}
-			},
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			}
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling STM32 Debug Build"
+		},
+
+
+
+		{
+			"label": "PIC32 Release Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_pic32",
+				{
+					"value": "options:release release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling PIC32 Release Build"
 		},
 		{
-			"label": "Clean",
+			"label": "PIC32 Debug Build",
 			"type": "shell",
-			"command": "ceedling clean",
-			"options": {
-				"cwd": "${workspaceRoot}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
+			"command": "ceedling",
+			"args": [
+				"project:project_pic32",
+				{
+					"value": "options:debug release",
+					"quoting": "escape"
 				}
-			},
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
-			"problemMatcher": []
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling PIC32 Debug Build"
 		},
+
+
+
+
 		{
 			"label": "Run Unit Tests",
 			"type": "shell",
-			"command": "ceedling test:all",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"command": "ceedling",
+			"args": [
+				"test:all"
+			],
 			"group": {
-				"kind": "build",
+				"kind": "test",
 				"isDefault": true
-			}
+			},
+			"detail": "Ceedling Unit Tests"
 		},
 		{
 			"label": "Generate Coverage Report",
 			"type": "shell",
-			"command": "ceedling gcov:all utils:gcov",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"command": "ceedling",
+			"args": [
+				"gcov:all",
+				"utils:gcov"
+			],
 			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "Ceedling Code Coverage Report"
 		},
 		{
 			"label": "Add PVS-Studio Special Comment",
 			"type": "shell",
-			"command": "${workspaceFolder}\\tools\\pvs-studio\\windows\\How-To-Use-PVS-Studio-FREE -c 2 ${workspaceFolder}\\src",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"command": "${workspaceFolder}${pathSeparator}tools${pathSeparator}pvs-studio${pathSeparator}windows${pathSeparator}How-To-Use-PVS-Studio-FREE",
+			"args": [
+				"-c",
+				"2",
+				"${workspaceFolder}${pathSeparator}src"
+			],
 			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "PVS-Studio Special Comment"
 		},
 		{
 			"label": "Run Static Analyzer",
-			"type": "shell",			
-			"command": "ceedling pvstudio",
-			"options": {
-				"cwd": "${workspaceFolder}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"pvstudio",
+			],
 			"group": {
-				"kind": "build",
-				"isDefault": true
+				"kind": "none",
+				"isDefault": false
 			},
-			"problemMatcher": []
+			"dependsOn": [
+				"Add PVS-Studio Special Comment"
+			],
+			"detail": "PVS-Studio Static Analyzer"
 		},
 		{
 			"label": "Generate Documentation",
 			"type": "shell",
-			"command": "ceedling doxygen",
-			"options": {
-				"cwd": "${workspaceRoot}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"command": "ceedling",
+			"args": [
+				"doxygen",
+			],
 			"group": {
-				"kind": "test",
-				"isDefault": true
+				"kind": "none",
+				"isDefault": false
 			},
-			"problemMatcher": []
+			"detail": "Doxygen Generator"
 		},
 		{
 			"label": "Run Linter",
 			"type": "shell",
-			"command": "ceedling linter",
-			"options": {
-				"cwd": "${workspaceRoot}",
-				"shell": {
-					"executable": "cmd.exe",
-					"args": [
-						"/C"
-					]
-				}
-			},
+			"command": "ceedling",
+			"args": [
+				"linter",
+			],
 			"group": {
-				"kind": "test",
-				"isDefault": true
+				"kind": "none",
+				"isDefault": false
 			},
-			"problemMatcher": []
+			"detail": "Clang Format"
 		},
 		{
 			"label": "PIC32MX Erase Flash",
@@ -253,7 +236,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []
@@ -272,7 +255,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []
@@ -291,7 +274,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []
@@ -310,7 +293,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []
@@ -348,7 +331,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []
@@ -367,7 +350,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []
@@ -386,7 +369,7 @@
 				}
 			},
 			"group": {
-				"kind": "test",
+				"kind": "none",
 				"isDefault": true
 			},
 			"problemMatcher": []

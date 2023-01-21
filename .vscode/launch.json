@@ -1,0 +1,57 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32 Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "D:${pathSeparator}sasha${pathSeparator}temp${pathSeparator}gits${pathSeparator}fwProjectTemplate${pathSeparator}build${pathSeparator}release${pathSeparator}pku.elf",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "arm-none-eabi-gdb",
+            "targetArchitecture": "arm",
+            "setupCommands": [  
+                {
+                    "description": "Choose the file for debuging",
+                    "text": "file D:/sasha/temp/gits/fwProjectTemplate/build/release/pku.elf",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Connect to the GDB server",
+                    "text": "target remote localhost:3333",                                 
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Reset MCU",
+                    "text": "monitor reset",                                              
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Halt MCU",
+                    "text": "monitor halt",                                                  
+                    "ignoreFailures": false
+                },
+                {
+                    "description":"Load code into MCU",
+                    "text": "load" ,              
+                    "ignoreFailures": false                                      
+                }
+            ]
+        },
+        {
+            "name": "STM32 Cortex Debug",
+            "type": "cortex-debug",
+            "device": "Cortex-M0",
+            "executable": "D:${pathSeparator}sasha${pathSeparator}temp${pathSeparator}gits${pathSeparator}fwProjectTemplate${pathSeparator}build${pathSeparator}release${pathSeparator}pku.elf",
+            "servertype": "jlink",
+            "interface": "swd",
+            "request": "launch",
+            //путь к файлу описания регистров микроконтроллера (SVD файл), его можно найти в папке с файлами поддержки семейства микроконтроллеров для STM32CubeMx
+            "svdFile": "./JLink/STM32F042x.svd"
+        }
+    ]
+}

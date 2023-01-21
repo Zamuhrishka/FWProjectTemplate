@@ -1,0 +1,61 @@
+{
+    "env": {
+        "prjDefaultIncludePath": ["${workspaceFolder}\\src"],
+        "buildPath": ["${workspaceFolder}\\build\\release"],
+        "testsPath": ["${workspaceFolder}\\test"]
+    },
+    "configurations": [
+        {
+            "name": "STM32",
+            "includePath": [
+                "${workspaceFolder}/src/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "USE_HAL_DRIVER",
+                "STM32F407VGTX"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "C:\\ST\\STM32CubeIDE_1.7.0\\STM32CubeIDE\\plugins\\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\\tools\\bin\\arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        },
+        {
+            "name": "Smart Relay App",
+            "includePath": [
+                "${workspaceFolder}/src/**"
+                // "c:/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/include",
+                // "c:/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/include-fixed",
+                // "${workspaceRoot}/libs/FreeRTOS-Kernel/include",
+                // "${workspaceRoot}/libs/FreeRTOS-Kernel/portable/GCC/ARM_CM0",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/CMSIS/Core/Include",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/CMSIS/Device/ST/STM32F0xx/Include",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/CMSIS/Include",
+                // "${workspaceRoot}/libs/STM32CubeF0_HAL/Drivers/STM32F0xx_HAL_Driver/Inc"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "USE_HAL_DRIVER",
+                "STM32F407VGTX"
+            ],
+            "intelliSenseMode": "${default}",
+            "compilerPath": "${PATH}/arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb",
+                "--target=arm-arm-none-eabi"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,409 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Clean",
+			"type": "shell",
+			"command": "ceedling clean",
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "x86 Release Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_x86",
+				{
+					"value": "options:release release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling x86 Release Build"
+		},
+		{
+			"label": "x86 Debug Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_x86",
+				{
+					"value": "options:debug release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling x86 Debug Build"
+		},
+		{
+			"label": "STM32 Release Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_stm32",
+				{
+					"value": "options:release release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling STM32 Release Build"
+		},
+		{
+			"label": "STM32 Debug Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_stm32",
+				{
+					"value": "options:debug release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling STM32 Debug Build"
+		},
+
+
+
+		{
+			"label": "PIC32 Release Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_pic32",
+				{
+					"value": "options:release release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling PIC32 Release Build"
+		},
+		{
+			"label": "PIC32 Debug Build",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"project:project_pic32",
+				{
+					"value": "options:debug release",
+					"quoting": "escape"
+				}
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Clean"
+			],
+			"detail": "Ceedling PIC32 Debug Build"
+		},
+
+
+
+
+		{
+			"label": "Run Unit Tests",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"test:all"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"detail": "Ceedling Unit Tests"
+		},
+		{
+			"label": "Generate Coverage Report",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"gcov:all",
+				"utils:gcov"
+			],
+			"group": {
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "Ceedling Code Coverage Report"
+		},
+		{
+			"label": "Add PVS-Studio Special Comment",
+			"type": "shell",
+			"command": "${workspaceFolder}${pathSeparator}tools${pathSeparator}pvs-studio${pathSeparator}windows${pathSeparator}How-To-Use-PVS-Studio-FREE",
+			"args": [
+				"-c",
+				"2",
+				"${workspaceFolder}${pathSeparator}src"
+			],
+			"group": {
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "PVS-Studio Special Comment"
+		},
+		{
+			"label": "Run Static Analyzer",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"pvstudio",
+			],
+			"group": {
+				"kind": "none",
+				"isDefault": false
+			},
+			"dependsOn": [
+				"Add PVS-Studio Special Comment"
+			],
+			"detail": "PVS-Studio Static Analyzer"
+		},
+		{
+			"label": "Generate Documentation",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"doxygen",
+			],
+			"group": {
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "Doxygen Generator"
+		},
+		{
+			"label": "Run Linter",
+			"type": "shell",
+			"command": "ceedling",
+			"args": [
+				"linter",
+			],
+			"group": {
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "Clang Format"
+		},
+		{
+			"label": "PIC32MX Erase Flash",
+			"type": "shell",
+			"command": "ipecmd.exe -TPPK3 -P32MX795F512L -E -OL",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\temp",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "PIC32MX Write Flash",
+			"type": "shell",
+			"command": "ipecmd.exe -TPPK3 -P32MX795F512L -F${workspaceFolder}\\build\\release\\pku.hex -M -OL",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\temp",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "PIC32MX Read Flash",
+			"type": "shell",
+			"command": "ipecmd.exe -TPPK3 -P32MX795F512L -GFreadDevice.hex",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\temp",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "PIC32MX Reset",
+			"type": "shell",
+			"command": "ipecmd.exe -TPPK3 -P32MX795F512L -OL",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\temp",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Write Flash",
+			"type": "shell",
+			"command": "st-flash write pku.hex 0x8000000 & st-flash reset",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Erase Flash",
+			"type": "shell",
+			"command": "st-flash erase & st-flash reset",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Read Flash",
+			"type": "shell",
+			"command": "st-flash --area=option read ${workspaceRoot}\\build\\release\\read.hex",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "STM32 Reset",
+			"type": "shell",
+			"command": "st-flash reset",
+			"options": {
+				"cwd": "${workspaceRoot}\\build\\release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Openocd Run",
+			"type": "shell",
+			"command": "openocd -f D:/sasha/temp/gits/fwProjectTemplate/tools/openocd/share/openocd/scripts/board/stm32f4discovery.cfg",
+			"options": {
+				"cwd": "${workspaceRoot}/build/release",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			}
+		},
+		{
+            "label": "Download",
+            "type": "shell",
+            "command": "JLink.exe -Device STM32F042K6 -If SWD -Speed 4000 JLink\\FlashMCU.jlink",
+            "options": {
+                "cwd": "${workspaceRoot}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [ "/C" ]
+                }
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+	]
+}

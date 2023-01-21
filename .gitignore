@@ -45,7 +45,7 @@
 
 # Folders
 build/
-.vscode/
+# .vscode/
 src/Core/
 src/Drivers/
 # /tools/pvs-studio/windows
@@ -55,7 +55,7 @@ tools/openocd/
 tools/pickit3/
 tools/stlink/
 
-# Exclude some files 
+# Exclude some files
 !/tools/clang-format/windows/clang-format.exe
 !/tools/clang-tidy/clang-tidy.exe
 !/tools/pvs-studio/windows/How-To-Use-PVS-Studio-FREE.exe

@@ -1,0 +1,19 @@
+{
+	"editor.formatOnSave": false,
+	"clang-format.executable": "${workspaceRoot}/tools/clang-format/windows/clang-format.exe",
+	"ceedlingExplorer.shellPath": "C:\\Windows\\System32\\cmd.exe",
+	"projectManager.git.baseFolders": [
+		"${workspaceFolder}"
+	],
+	"vsicons.presets.foldersAllDefaultIcon": true,
+	"[c]": {
+		"editor.defaultFormatter": "xaver.clang-format"
+	},
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
+	"cortex-debug.JLinkGDBServerPath": "JLinkGDBServerCL.exe",
+  	"cortex-debug.armToolchainPath": "c:\\gcc-arm\\bin",
+  	"project_mcu": "STM32F042K6",
+	"stm32-for-vscode.openOCDPath": "D:\\SASHA\\TEMP\\GITS\\FWPROJECTTEMPLATE\\TOOLS\\OPENOCD\\BIN\\OPENOCD.EXE",
+	"stm32-for-vscode.makePath": "C:\\CYGWIN64\\BIN\\MAKE.EXE",
+	"stm32-for-vscode.armToolchainPath": "C:\\ST\\STM32CUBEIDE_1.7.0\\STM32CUBEIDE\\PLUGINS\\COM.ST.STM32CUBE.IDE.MCU.EXTERNALTOOLS.GNU-TOOLS-FOR-STM32.9-2020-Q2-UPDATE.WIN32_2.0.0.202105311346\\TOOLS\\BIN",
+}

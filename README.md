@@ -34,10 +34,10 @@ If you decide use this template in your firmware project then you need do next s
   - [release.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/release.yml) - build options for release configuration
 - [src](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/src) - source code of project
 - [test](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test) - folder which contain all necessary for unit testing
-  - [fake](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/fake) - using a system that behaves very similar to the real one, but avoids costly or destructive actions
-  - [mock](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/mock) - using a system with the same interface as the real one, but which in addition registers interactions for subsequent monitoring and verification statements
+  - [fake](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/fake) - are a working implementation, but usually substitute their dependencies with something simpler and easier for a test environment
+  - [mock](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/mock) - are an implementation that is controlled by the unit test. They can be pre-programmed with return values, check values of arguments, and help verify that functions are called
   - [src](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/src) - source code of unit tests
-  - [stubs](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/stubs) - using a predefined value as a response instead of receiving a response from a live system
+  - [stubs](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/stubs) - are a trivial implementation that returns canned values, generally always returning valid or invalid values
   - [support](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/support) - various functions, macros to extend the functionality of the basic framework
 - [tools](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools) - several useful binary utils
   - [clang-format](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/clang-format) - tool to automatically format C/C++/Objective-C code

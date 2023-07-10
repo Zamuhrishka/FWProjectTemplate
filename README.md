@@ -145,6 +145,7 @@ openocd -f ${file}.cfg
 #STM32 Write Flash
 JLink.exe -Device {device} -If SWD -Speed 4000 ${file}.jlink
 ```
+
 ### VSCode Tasks
 
 ```bash
@@ -171,10 +172,11 @@ STM32 Read Flash
 STM32 Reset
 Openocd Run
 ```
+
 ## Third-party software
 
-  - [Ceedling Test Framework](https://github.com/ThrowTheSwitch/Ceedling)
-  - [PVStudio](https://pvs-studio.com/ru/pvs-studio/)
-  - [VSCode](https://code.visualstudio.com/)
-  - [Clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
-  - [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+- [Ceedling Test Framework](https://github.com/ThrowTheSwitch/Ceedling)
+- [PVStudio](https://pvs-studio.com/en/pvs-studio/)
+- [VSCode](https://code.visualstudio.com/)
+- [Clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
+- [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)

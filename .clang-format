@@ -4,90 +4,99 @@
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 # https://github.com/01org/parameter-framework/blob/master/.clang-format
 
-# Common settings
-BasedOnStyle:  Microsoft
-TabWidth:        4
-IndentWidth:     4
-UseTab:          Never
-ColumnLimit:  120
-
----
+#-----------------------------------------------------------------------------
+# Common Settings
+#-----------------------------------------------------------------------------
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 4
+UseTab: Never
+ColumnLimit: 120
 Language: Cpp
-BreakBeforeBraces: Allman
-PointerAlignment: Left
-# AlignAfterOpenBracket: Left
-AlignConsecutiveMacros: false
-AlignConsecutiveAssignments: false
-AlignConsecutiveBitFields: false
+
+#-----------------------------------------------------------------------------
+# Align Settings
+#-----------------------------------------------------------------------------
+AlignAfterOpenBracket : Align
+AlignConsecutiveAssignments: true
+AlignConsecutiveBitFields: true
 AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: true
 AlignEscapedNewlines: Left
-AlignOperands: Align
+AlignOperands: AlignAfterOperator
 AlignTrailingComments: true
-AllowAllArgumentsOnNextLine: true
-AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortEnumsOnASingleLine: true
+
+#-----------------------------------------------------------------------------
+# Allow Settings
+#-----------------------------------------------------------------------------
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: None
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: false
-AlwaysBreakAfterDefinitionReturnType: None
-AlwaysBreakAfterReturnType: None
+CompactNamespaces: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+
+#-----------------------------------------------------------------------------
+# Break Settings
+#-----------------------------------------------------------------------------
+BreakBeforeBraces: Allman
+AlwaysBreakAfterReturnType: TopLevelDefinitions
 AlwaysBreakBeforeMultilineStrings: false
-BinPackArguments: true
-BinPackParameters: true
-# BraceWrapping:
-#   AfterCaseLabel: true
-#   AfterClass: true
-#   AfterControlStatement: Always
-#   AfterEnum: true
-  # AfterFunction: true
-#   AfterNamespace: true
-#   AfterObjCDeclaration: true
-#   AfterStruct: true
-#   AfterUnion: false
-#   AfterExternBlock: true
-#   BeforeCatch: true
-#   BeforeElse: true
-#   BeforeLambdaBody: false
-#   BeforeWhile: false
-#   IndentBraces: false
-#   SplitEmptyFunction: true
-#   SplitEmptyRecord: true
-#   SplitEmptyNamespace: true
-BreakBeforeBinaryOperators: None
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
+# BreakBeforeBinaryOperator: All
+# BreakBeforeConceptDeclarations: true
 BreakBeforeTernaryOperators: true
-BreakAfterJavaFieldAnnotations: false
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
 BreakStringLiterals: true
-CommentPragmas: "^ IWYU pragma:"
-DeriveLineEnding: true
-DerivePointerAlignment: false
-DisableFormat: false
-ExperimentalAutoDetectBinPacking: false
-IncludeBlocks: Preserve
-IncludeCategories:
-  - Regex: '^"(llvm|llvm-c|clang|clang-c)/'
-    Priority: 2
-    SortPriority: 0
-  - Regex: '^(<|"(gtest|gmock|isl|json)/)'
-    Priority: 3
-    SortPriority: 0
-  - Regex: ".*"
-    Priority: 1
-    SortPriority: 0
-IncludeIsMainRegex: "(test_)?$"
-IncludeIsMainSourceRegex: ""
+
+#-----------------------------------------------------------------------------
+# Indent Settings
+#-----------------------------------------------------------------------------
+IndentCaseBlocks: false
 IndentCaseLabels: true
-IndentCaseBlocks: true
-IndentGotoLabels: true
+NamespaceIndentation: All
+IndentExternBlock: Indent
 IndentPPDirectives: BeforeHash
-IndentExternBlock: AfterExternBlock
+# IndentRequires: false
 IndentWrappedFunctionNames: false
-InsertTrailingCommas: None
-KeepEmptyLinesAtTheStartOfBlocks: false
-MacroBlockBegin: ""
-MacroBlockEnd: ""
-MaxEmptyLinesToKeep: 1
+
+#-----------------------------------------------------------------------------
+# Spacing Settings
+#-----------------------------------------------------------------------------
+BitFieldColonSpacing: After
+# EmptyLineBeforeAccessModifier: Always
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeAssignmentOperators: false
+# SpaceBeforeCaseColon: true
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: Never
+SpaceBeforeRangeBasedForLoopColon: false
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+#-----------------------------------------------------------------------------
+# Penalty Settings
+#-----------------------------------------------------------------------------
 PenaltyBreakAssignment: 2
 PenaltyBreakBeforeFirstCallParameter: 19
 PenaltyBreakComment: 300
@@ -96,25 +105,14 @@ PenaltyBreakString: 1000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 1000
-ReflowComments: true
-SortIncludes: true
-SpaceAfterCStyleCast: false
-SpaceAfterLogicalNot: false
-SpaceBeforeAssignmentOperators: true
-SpaceBeforeParens: ControlStatements
-SpaceBeforeRangeBasedForLoopColon: true
-SpaceInEmptyBlock: false
-SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 1
-SpacesInAngles: false
-SpacesInConditionalStatement: false
-SpacesInContainerLiterals: true
-SpacesInCStyleCastParentheses: false
-SpacesInParentheses: false
-SpacesInSquareBrackets: false
-SpaceBeforeSquareBrackets: false
-BitFieldColonSpacing: Both
-Standard: Latest
-UseCRLF: false
----
 
+#-----------------------------------------------------------------------------
+# Other Settings
+#-----------------------------------------------------------------------------
+CommentPragmas: "^ IWYU pragma:"
+FixNamespaceComments: false
+IncludeBlocks: Preserve
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+PointerAlignment: Right
+SortIncludes: true

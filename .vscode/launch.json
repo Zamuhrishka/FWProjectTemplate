@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Windows Debug Launch",
+            "name": "Windows Debug",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}${pathSeparator}build${pathSeparator}release${pathSeparator}project_name.exe",
@@ -28,7 +28,7 @@
             ]
         },
         {
-            "name": "STM32 Cortex Debug",
+            "name": "STM32 JLink Debug",
             "type": "cortex-debug",
             "device": "Cortex-M0",
             "executable": "D:${pathSeparator}sasha${pathSeparator}temp${pathSeparator}gits${pathSeparator}fwProjectTemplate${pathSeparator}build${pathSeparator}release${pathSeparator}pku.elf",
@@ -36,6 +36,69 @@
             "interface": "swd",
             "request": "launch",
             "svdFile": "./JLink/STM32F042x.svd"
+        },
+        {
+            "name": "STM32 GDB Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "D:${pathSeparator}sasha${pathSeparator}temp${pathSeparator}gits${pathSeparator}fwProjectTemplate${pathSeparator}build${pathSeparator}release${pathSeparator}pku.elf",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "arm-none-eabi-gdb",
+            "targetArchitecture": "arm",
+            "setupCommands": [
+                {
+                    "description": "Choose the file for debuging",
+                    "text": "file D:/sasha/temp/gits/fwProjectTemplate/build/release/pku.elf",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Connect to the GDB server",
+                    "text": "target remote localhost:3333",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Reset MCU",
+                    "text": "monitor reset",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Halt MCU",
+                    "text": "monitor halt",
+                    "ignoreFailures": false
+                },
+                {
+                    "description":"Load code into MCU",
+                    "text": "load" ,
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            // Use the following for the Ceedling Explorer Debug Configuration
+            "name": "Ceedling Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/test/out/${command:ceedlingExplorer.debugTestExecutable}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            // May omit the following if gdb is on the PATH
+            "miDebuggerPath": "gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }

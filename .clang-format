@@ -45,7 +45,7 @@ ConstructorInitializerAllOnOneLineOrOnePerLine: false
 # Break Settings
 #-----------------------------------------------------------------------------
 BreakBeforeBraces: Allman
-AlwaysBreakAfterReturnType: TopLevelDefinitions
+AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false

@@ -11,6 +11,11 @@ This template based on [Ceedling Test Framework](https://github.com/ThrowTheSwit
   - [Project Structure](#project-structure)
   - [Usage](#usage)
     - [CLI](#cli)
+      - [Build and program the firmware](#build-and-program-the-firmware)
+      - [Build and run the unit tests](#build-and-run-the-unit-tests)
+      - [Build and run gcov coverage](#build-and-run-gcov-coverage)
+      - [Other utils](#other-utils)
+      - [Flash firmware](#flash-firmware)
     - [VSCode Tasks](#vscode-tasks)
   - [Third-party software](#third-party-software)
 
@@ -60,117 +65,232 @@ If you decide use this template in your firmware project then you need do next s
 
 ### CLI
 
-**Build and program the firmware**
+#### Build and program the firmware
+
+- Build pic32 release firmware:
 
 ```bash
-#Build pic32 release firmware
 ceedling project:project_pic32 options:release release
+```
 
-#Build pic32 debug firmware
+- Build pic32 debug firmware:
+
+```bash
 ceedling project:project_pic32 options:debug release
+```
 
-#Build stm32 release firmware
+- Build stm32 release firmware:
+
+```bash
 ceedling project:project_stm32 options:release release
+```
 
-#Build stm32 debug firmware
+- Build stm32 debug firmware:
+
+```bash
 ceedling project:project_stm32 options:debug release
+```
 
-#Build x86 release firmware
+- Build x86 release firmware:
+
+```bash
 ceedling project:project_x86 options:release release
+```
 
-#Build x86 debug firmware
+- Build x86 debug firmware:
+
+```bash
 ceedling project:project_x86 options:debug release
+```
 
-#Build Clean
+- Build Clean
+
+```bash
 ceedling clean
 ```
 
-**Build and run the unit tests**
+#### Build and run the unit tests
 
 ```bash
-#Build and run all unit tests
-ceedling test:all
-```
-
-**Build and run gcov coverage**
-
-```bash
-#Build and run gcov coverage
 ceedling gcov:all utils:gcov
 ```
 
-**Other utils**
+#### Build and run gcov coverage
 
 ```bash
-#Run Static Analyser (PVStudio)
-ceedling pvstudio
+ceedling gcov:all utils:gcov
+```
 
-#Run documents generator
+#### Other utils
+
+- Run Static Analyser (PVStudio):
+
+```bash
+ceedling clean
+```
+
+- Run documents generator:
+
+```bash
 ceedling doxygen
 
-#Run linter
+```
+
+- Run linter:
+
+```bash
 ceedling linter
 ```
 
-**Flash firmware**
+#### Flash firmware
+
+- PIC32MX Erase Chip:
 
 ```bash
-#PIC32MX Erase Flash
 ipecmd.exe -TPPK3 -{device} -E -OL
+```
 
-#PIC32MX Write Flash
+- PIC32MX Write Chip:
+
+```bash
 ipecmd.exe -TPPK3 -{device} -F${file} -M -OL
+```
 
-#PIC32MX Read Flash
+- PIC32MX Read Chip:
+
+```bash
 ipecmd.exe -TPPK3 -{device} -GF${file}
+```
 
-#PIC32MX Reset
+- PIC32MX Reset Chip
+
+```bash
 ipecmd.exe -TPPK3 -{device} -OL
+```
 
-#STM32 Write Flash
+- STM32 Write Chip:
+
+```bash
 st-flash write ${file} ${addr} & st-flash reset
+```
 
-#STM32 Erase Flash
+- STM32 Erase Chip:
+
+```bash
 st-flash erase & st-flash reset
+```
 
-#STM32 Read Flash
+- STM32 Read Chip:
+
+```bash
 st-flash --area=option read ${file}
+```
 
-#STM32 Reset
+- STM32 Reset Chip:
+
+```bash
 st-flash reset
+```
 
-#Openocd Run
+- Openocd Run:
+
+```bash
 openocd -f ${file}.cfg
+```
 
-#STM32 Write Flash
+- STM32 Write Flash:
+
+```bash
 JLink.exe -Device {device} -If SWD -Speed 4000 ${file}.jlink
 ```
 
 ### VSCode Tasks
 
+Inside `.vscode` folder you can find `tasks.json` file which contain description for several helpful tasks which lets you run build, testing, flashing etc. using VSCode instead CLI.
+
+- PIC32 Release Build:
+
 ```bash
 PIC32 Release Build
+```
+
+- PIC32 Debug Build:
+
+```bash
 PIC32 Debug Build
+```
+
+- x86 Release Build:
+
+```bash
 x86 Release Build
+```
+
+- x86 Debug Build:
+
+```bash
 x86 Debug Build
+```
+
+- STM32 Release Build:
+
+```bash
 STM32 Release Build
+```
+
+- STM32 Debug Build:
+
+```bash
 STM32 Debug Build
+```
+
+- Build Clean:
+
+```bash
 Clean
+```
+
+- Run Unit Tests:
+
+```bash
 Run Unit Tests
-Add PVS-Studio Special Comment
+```
+
+- Run PVS-Studio Static Analyzer:
+
+```bash
 Run Static Analyzer
+```
+
+- Generate Doxygen Documentation:
+
+```bash
 Generate Documentation
+```
+
+- Run Clang-format Linter:
+
+```bash
 Run Linter
+```
+
+- Erase/Write/Read/Reset PIC32 chip:
+
+```bash
 PIC32MX Erase Flash
-STM32 Debug Build
 PIC32MX Write Flash
 PIC32MX Read Flash
 PIC32MX Reset
+```
+
+- Erase/Write/Read/Reset STM32 chip:
+
+```bash
+
 STM32 Write Flash
 STM32 Erase Flash
 STM32 Read Flash
 STM32 Reset
-Openocd Run
 ```
 
 ## Third-party software

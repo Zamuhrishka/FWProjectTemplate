@@ -1,7 +1,7 @@
 # Firmware Project Template
 
 This set of utils, folders, config files which can be used as template for each new firmware project.
-This template based on [Ceedling Test Framework](https://github.com/ThrowTheSwitch/Ceedling). This build system used for build as firmware and tests.
+This template based on [Ceedling Build System](https://github.com/ThrowTheSwitch/Ceedling). This build system used for build as firmware and tests.
 
 ## Table of Contents
 
@@ -36,18 +36,18 @@ If you decide use this template in your firmware project then you need do next s
 - [linker](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/linker) - linker scripts
 - [options](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/options) - config files for ceedling build system
   - [debug.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/debug.yml) - build options for debug configuration
-  - [release.yml.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/release.yml) - build options for release configuration
+  - [release.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/release.yml) - build options for release configuration
 - [src](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/src) - source code of project
 - [test](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test) - folder which contain all necessary for unit testing
-  - [fake](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/fake) - using a system that behaves very similar to the real one, but avoids costly or destructive actions
-  - [mock](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/mock) - using a system with the same interface as the real one, but which in addition registers interactions for subsequent monitoring and verification statements
+  - [fake](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/fake) - are a working implementation, but usually substitute their dependencies with something simpler and easier for a test environment
+  - [mock](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/mock) - are an implementation that is controlled by the unit test. They can be pre-programmed with return values, check values of arguments, and help verify that functions are called
   - [src](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/src) - source code of unit tests
-  - [stubs](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/stubs) - using a predefined value as a response instead of receiving a response from a live system
+  - [stubs](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/stubs) - are a trivial implementation that returns canned values, generally always returning valid or invalid values
   - [support](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/support) - various functions, macros to extend the functionality of the basic framework
 - [tools](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools) - several useful binary utils
   - [clang-format](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/clang-format) - tool to automatically format C/C++/Objective-C code
   - [clang-tidy](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/clang-tidy) - clang-based C++ “linter” tool
-  - [pvs-studio](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/pvs-studio - static analyser for C/C++
+  - [pvs-studio](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/tools/pvs-studio) - static analyser for C/C++
 - [vendor](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/vendor) -  binaries utils of ceedling framework
 - [.clang-format](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/.clang-format) - config file for clang-format util
 - [.gitignore](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/..gitignore) - config file for git ignoring

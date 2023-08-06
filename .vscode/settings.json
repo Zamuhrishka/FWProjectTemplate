@@ -12,13 +12,60 @@
     //************************************************************************************************************
     //Editor Settings
     //************************************************************************************************************
-    "files.trimTrailingWhitespace" : true,
     "editor.formatOnSave": false,
-    "workbench.iconTheme": "vscode-icons",
-    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "editor.fontFamily": "JetBrains Mono, Consolas, monospace",
+    "editor.fontSize": 14,
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": "active",
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "editor.rulers": [120, 160],
+
+    "files.trimTrailingWhitespace" : true,
+    "files.trimFinalNewlines" : true,
+    "files.insertFinalNewline" : true,
+
+    "explorer.compactFolders": false,
+
     "vsicons.dontShowNewVersionMessage": true,
+
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "vscode-icons",
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    //************************************************************************************************************
+    //Terminal Settings
+    //************************************************************************************************************
+    "terminal.integrated.env.windows": {
+        "TERM": "cygwin"
+    },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Promt": {
+            "path": [
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git": {
+            "path": [
+                "C:\\Program Files\\Git\\bin"
+            ],
+            "args": [
+                "--login",
+                "-i"
+            ],
+            "icon": "terminal-bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.cursorBlinking": true,
 
     //************************************************************************************************************
     //Extension Settings
@@ -88,6 +135,9 @@
     //Clang Format
     //------------------------------------------------------------------------------------------------------------
     "clang-format.executable": "D:\\sasha\\workspace\\repo\\FWToolbox\\tools\\clang-format\\windows\\clang-format.exe",
+
+    "clang-format.assumeFilename": "${workspaceFolder}/.clang-format",
+
     //------------------------------------------------------------------------------------------------------------
     //Doxygen
     //------------------------------------------------------------------------------------------------------------
@@ -166,36 +216,102 @@
     "todo-tree.highlights.useColourScheme": true,
     "todo-tree.general.tags": [
         "BUG",
-        "HACK",
         "FIXME",
+        "FIXIT",
+        "FIX",
         "TODO",
         "NOTE",
-        "XXX",
+        "REVIEW",
+        "WARNING",
+        "IMPORTANT",
         "[ ]",
         "[x]"
     ],
+    "todo-tree.general.tagGroups": {
+        "FIXME": [
+            "FIXME",
+            "FIXIT",
+            "FIX",
+        ]
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "type": "text"
+    },
     "todo-tree.highlights.customHighlight": {
+        "BUG": {
+            "icon": "bug",
+            "background": "#f80808",
+            "foreground": "#ffffff",
+            "iconColour": "#f80808"
+        },
+        "FIXME": {
+            "icon": "flame",
+            "background": "#e8f808",
+            "foreground": "#000000",
+            "iconColour": "#e8f808"
+        },
+        "TODO": {
+            "icon": "eye",
+            "background": "#45c724",
+            "foreground": "#000000",
+            "iconColour": "#45c724"
+        },
         "NOTE": {
             "icon": "note",
             "background": "#5a5df0",
-            "foreground": "#d7dce9",
+            "foreground": "#000000",
+            "iconColour": "#5a5df0"
         },
+        "REVIEW": {
+            "icon": "book",
+            "background": "#d15f3d",
+            "foreground": "#000000",
+            "iconColour": "#d15f3d"
+        },
+        "WARNING": {
+            "icon": "alert",
+            "background": "#e79f19",
+            "foreground": "#000000",
+            "iconColour": "#e79f19"
+        },
+        "IMPORTANT": {
+            "icon": "bell",
+            "background": "#e79f19",
+            "foreground": "#000000",
+            "iconColour": "#e79f19"
+        },
+        "[ ]": {
+            "icon": "dash",
+            "type": "tag",
+            "background": "#ffffff",
+            "foreground": "#b10c35",
+            "iconColour": "#b10c35"
+        },
+        "[x]": {
+            "icon": "check",
+            "type": "tag",
+            "background": "#ffffff",
+            "foreground": "#087045",
+            "iconColour": "#087045"
+        }
     },
+    "todo-tree.general.statusBar": "tags",
+    "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+    "todo-tree.regex.enableMultiLine": true,
+
     //------------------------------------------------------------------------------------------------------------
     //cSpell
     //------------------------------------------------------------------------------------------------------------
     "cSpell.userWords": [
         "Aleksander",
         "esize",
-        "Kovalchuk"
+        "JTAG",
+        "Kovalchuk",
+        "TRST"
     ],
     //************************************************************************************************************
     //Other Settings
     //************************************************************************************************************
-    "yaml.schemas": {
-        "file:///c%3A/Users/User/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-    },
     "redhat.telemetry.enabled": false,
-    "workbench.colorTheme": "Default Dark+",
     "ceedlingExplorer.debugConfiguration": "ceedling_gdb",
 }

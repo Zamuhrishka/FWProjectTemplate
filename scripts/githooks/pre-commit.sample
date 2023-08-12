@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# This hook apply format utility to files which were changed
+for file in $(git diff --staged --name-only | grep -i -E '\.(c|h|cpp|hpp)$'); do
+    echo ${file}
+    clang-format -i ${file}
+    git add ${file}
+done
+
+# This hook apply format utility only to parts of code which were changed
+# if git rev-parse --verify HEAD >/dev/null 2>&1
+# then
+#     against=HEAD
+# else
+#     # Initial commit: diff against an empty tree object
+#     against=
+# fi
+
+# clangformatout = $(python scripts/git-clang-format.py --binary clang-format --diff -q)
+
+# # Redirect output to stderr
+# exec 1>&2
+
+# if [ "$clangformatout" != "" ] && [ "$clangformatout" != "no modified files to format" ]
+# then
+#     echo "Format Failed!"
+#     exit 1
+# else
+#     echo "OK!"
+# fi

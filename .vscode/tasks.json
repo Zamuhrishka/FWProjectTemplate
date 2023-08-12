@@ -223,6 +223,16 @@
 			"detail": "Clang Format"
 		},
 		{
+			"label": "Format Fragment",
+			"type": "shell",
+			"command": "git diff -U0 --no-color master | python scripts/clang-format-diff.py -binary clang-format -p1 -i -iregex '.*\\.(c|cxx|cpp|hpp|h)$')",
+			"group": {
+				"kind": "none",
+				"isDefault": false
+			},
+			"detail": "Format only diff between created commit and master"
+		},
+		{
 			"label": "PIC32MX Erase Flash",
 			"type": "shell",
 			"command": "ipecmd.exe -TPPK3 -P32MX795F512L -E -OL",

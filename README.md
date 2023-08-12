@@ -34,9 +34,13 @@ If you decide use this template in your firmware project then you need do next s
 - __build__ - frimware builds
 - [docs](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/docs) - projects documentations
 - [linker](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/linker) - linker scripts
-- [options](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/options) - config files for ceedling build system
+- [options](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/options) - config files for Ceedling build system
   - [debug.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/debug.yml) - build options for debug configuration
   - [release.yml](https://github.com/Zamuhrishka/FWProjectTemplate/blob/develop/options/release.yml) - build options for release configuration
+- [scripts](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/scripts) - a collection of useful scripts for the project
+  - [githooks](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/scripts/githooks) - git hooks scripts
+  - [add_firmware_version.py](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/scripts/add_firmware_version.py) - python script for creating `version.h` file which contain several definitions for version firmware store
+  - [format_all_files.py](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/scripts/format_all_files.py) - bat script formatting all files in `src` folder
 - [src](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/src) - source code of project
 - [test](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test) - folder which contain all necessary for unit testing
   - [fake](https://github.com/Zamuhrishka/FWProjectTemplate/tree/develop/test/fake) - are a working implementation, but usually substitute their dependencies with something simpler and easier for a test environment

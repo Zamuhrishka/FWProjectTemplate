@@ -3,10 +3,12 @@
     //Common Settings
     //************************************************************************************************************
     "[c]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave": true
     },
     "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave": true
     },
 
     //************************************************************************************************************
@@ -135,7 +137,6 @@
     //Clang Format
     //------------------------------------------------------------------------------------------------------------
     "clang-format.executable": "D:\\sasha\\workspace\\repo\\FWToolbox\\tools\\clang-format\\windows\\clang-format.exe",
-
     "clang-format.assumeFilename": "${workspaceFolder}/.clang-format",
 
     //------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,56 @@
+#!/bin/sh
+
+failed_files=()
+
+for file in $(git diff --staged --name-only | grep -i -E '\.(c|h|cpp|hpp)$'); do
+    clangformatout=$(python scripts/git-clang-format.py master ${file} --diff -q)
+
+    # Redirect output to stderr
+    exec 1>&2
+
+    if [ "$clangformatout" != "" ] && [ "$clangformatout" != "no modified files to format" ]; then
+        failed_files+=("$file")
+    fi
+done
+
+if [ ${#failed_files[@]} -ne 0 ]; then
+    echo -e "\e[31m"
+    echo " _____                          _                              "
+    echo "|  ___|__  _ __ _ __ ___   __ _| |_    ___ _ __ _ __ ___  _ __ "
+    echo "| |_ / _ \| '__| '_ \` _ \ / _\` | __|  / _ \ '__| '__/ _ \| '__|"
+    echo "|  _| (_) | |  | | | | | | (_| | |_  |  __/ |  | | | (_) | |   "
+    echo "|_|  \___/|_|  |_| |_| |_|\__,_|\__|  \___|_|  |_|  \___/|_|   "
+    echo -e "\e[0m"
+
+    echo -e "\nFiles with formatting issues:"
+    for file in "${failed_files[@]}"; do
+        echo "  - $file"
+    done
+
+    exit 1
+fi
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# This hook apply format utility to files which were changed
+# for file in $(git diff --staged --name-only | grep -i -E '\.(c|h|cpp|hpp)$'); do
+#     echo ${file}
+#     clang-format -i ${file}
+#     git add ${file}
+# done
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# clangformatout = $(python scripts/git-clang-format.py --binary clang-format --diff -q)
+
+# # Redirect output to stderr
+# exec 1>&2
+
+# if [ "$clangformatout" != "" ] && [ "$clangformatout" != "no modified files to format" ]
+# then
+#     echo "Format Failed!"
+#     exit 1
+# else
+#     echo "OK!"
+# fi
